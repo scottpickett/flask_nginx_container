@@ -4,5 +4,5 @@
 /flask/tests/__pycache__
 /flask/venv
 /flask/logs
-.vscode/
+/.vscode
 
