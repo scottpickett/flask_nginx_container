@@ -2,6 +2,7 @@
 /flask/__pycache__
 /flask/app/__pycache__
 /flask/tests/__pycache__
+/flask/tests/coverage/.coverage
 /flask/venv
 /flask/logs
 /.vscode
