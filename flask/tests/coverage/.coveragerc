@@ -1,0 +1,11 @@
+[run]
+branch = True
+data_file = tests/coverage/.coverage
+omit =
+    app/wsgi.py
+
+[report]
+# Regexes for lines to exclude from consideration
+exclude_lines =
+
+    if __name__ == .__main__.:

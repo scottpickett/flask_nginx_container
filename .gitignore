@@ -1,0 +1,7 @@
+/flask/.pytest_cache
+/flask/__pycache__
+/flask/app/__pycache__
+/flask/tests/__pycache__
+/flask/venv
+/flask/logs
+
