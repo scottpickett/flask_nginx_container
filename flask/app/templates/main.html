@@ -1,17 +1,28 @@
-<html>
-    <head>
-    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"> -->
-    <link rel="stylesheet" href="https://igoradamenko.github.io/awsm.css/css/awsm.css">
-  </head>
+<!DOCTYPE html>
+<head>
+    <title>Sample Python Flask Application</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="/assests/favicon.ico">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+
 <body>
-      <div>
-        <p>Enter the Data to be Reversed:</p>
-        <form action="/" method="post">
-          <input type="text" name="data">
-          <input type="submit" value="Submit Data">
-        </form>
+    <div class="container">
+        <div class="header">Sample Python Flask Application</div>
+        <div class="content-large">
         <p><b>Data:</b></p>
         <p><i>{{ data }}</i></p>
-      </div>
+        </div>
+        <div class="content-small"><p>Enter the Data to be Reversed:</p>
+          <form action="/" method="post">
+            <input type="text" name="data">
+            <input type="submit" value="Submit Data">
+          </form>
+        </div>
+        <div class="content-small">
+            This is a small element
+        </div>
+        <div class="footer">Footer</div>
+    </div>
 </body>
-</html>
