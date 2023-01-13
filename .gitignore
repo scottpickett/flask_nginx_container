@@ -6,4 +6,5 @@
 /flask/venv
 /flask/logs
 /.vscode
+.env
 
