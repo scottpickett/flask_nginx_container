@@ -6,5 +6,5 @@
 /flask/venv
 /flask/logs
 /.vscode
-.env
+# .env  removed for docker config directives
 
