@@ -6,14 +6,14 @@ services:
     restart: always
     build: ./flask
     ports:
-      - "8800:8800"
-    command: gunicorn -w 1 -b 0.0.0.0:8800 app.wsgi:app
-  
+      - "${FLASK_HOST_PORT:-8800}:${FLASK_CONTAINER_PORT:-8800}"
+    command: gunicorn -w 1 -b 0.0.0.0:${FLASK_CONTAINER_PORT:-8800} app.wsgi:app
+
   nginx:
     container_name: nginx
     restart: always
     build: ./nginx
     ports:
-      - "8080:8080"
+      - "${NGINX_HOST_PORT:-8080}:${NGINX_CONTAINER_PORT:-8080}"
     depends_on:
       - flask
