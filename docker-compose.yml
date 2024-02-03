@@ -3,11 +3,15 @@ version: '3'
 services:
   flask:
     container_name: flask
+    volumes:
+      - ./flask/app:/flask/app
+    environment:
+      - FLASK_ENV=development
     restart: always
     build: ./flask
     ports:
       - "${FLASK_HOST_PORT:-8800}:${FLASK_CONTAINER_PORT:-8800}"
-    command: gunicorn -w 1 -b 0.0.0.0:${FLASK_CONTAINER_PORT:-8800} app.wsgi:app
+    command: gunicorn --reload -w 1 -b 0.0.0.0:${FLASK_CONTAINER_PORT:-8800} app.wsgi:app
 
   nginx:
     container_name: nginx
@@ -17,3 +21,4 @@ services:
       - "${NGINX_HOST_PORT:-8080}:${NGINX_CONTAINER_PORT:-8080}"
     depends_on:
       - flask
+
