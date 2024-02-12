@@ -32,6 +32,12 @@ sudo docker container ls
 sudo docker-compose up --build -d
 ```
 
+### Restart the containers
+
+```
+sudo docker-compose restart
+```
+
 #### Stop containers and remove them, if needed
 
 ```
