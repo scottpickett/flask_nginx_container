@@ -7,6 +7,6 @@
 /flask/logs
 /.vscode
 # .env  removed for docker config directives
-.jsonk
+*.jsonk
 
 
