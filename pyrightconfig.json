@@ -1,0 +1,12 @@
+{
+  "include": ["src", "tests"],
+  "exclude": ["**/node_modules", "**/__pycache__"],
+  "ignore": ["**/node_modules"],
+  "defineConstant": { "DEBUG": true },
+  "venv": "venv",
+  "venvPath": ".",
+  "reportMissingImports": true,
+  "reportMissingTypeStubs": false,
+  "pythonVersion": "3.10",
+  "pythonPlatform": "Linux"
+}
