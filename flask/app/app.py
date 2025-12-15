@@ -3,8 +3,9 @@ from functools import wraps
 from flask import request, abort, Flask, render_template, request, url_for
 import app.server as server
 
-app = Flask(__name__)
-
+SERVICE_NAME = 'flask_nginx_container'
+app = Flask(__name__, static_url_path=f'/{SERVICE_NAME}/static')
+app.config['APPLICATION_ROOT'] = f'/{SERVICE_NAME}'
 
 def require_api_key(view_function):
     """
@@ -54,7 +55,7 @@ def require_api_key(view_function):
     return decorated_function
 
 
-@app.route('/', methods=['GET'])
+@app.route(f'/{SERVICE_NAME}/', methods=['GET'])
 def root_get():
     """The default GET view for hitting the application with a browser
 
@@ -64,7 +65,7 @@ def root_get():
     return render_template('main.html', data=returned_data)
 
 
-@app.route('/', methods=['POST'])
+@app.route(f'/{SERVICE_NAME}/', methods=['POST'])
 def root_post():
     """The POST view for the default page. Requires form submitted data.
     Submitted data is passed to the "back-end" and reversed.
@@ -77,7 +78,7 @@ def root_post():
     return render_template('main.html', data=returned_data)
 
 
-@app.route('/api', methods=['GET'])
+@app.route(f'/{SERVICE_NAME}/api', methods=['GET'])
 def api_get() -> dict:
     """The GET method page for the API view.
 
@@ -88,7 +89,7 @@ def api_get() -> dict:
     return {"status": status, "data": returned_data}
 
 
-@app.route('/api', methods=['POST'])
+@app.route(f'/{SERVICE_NAME}/api', methods=['POST'])
 @require_api_key
 def api_post() -> dict:
     """The POST view for the API. Submitted data is passed to the "back-end"
