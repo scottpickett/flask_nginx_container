@@ -9,16 +9,16 @@ services:
       - FLASK_ENV=development
     restart: always
     build: ./flask
-    ports:
-      - "${FLASK_HOST_PORT:-8800}:${FLASK_CONTAINER_PORT:-8800}"
-    command: gunicorn --reload -w 1 -b 0.0.0.0:${FLASK_CONTAINER_PORT:-8800} app.wsgi:app
+    ports:  # define container service ports below. 7709/7979 for testing, use 8800/8080 for PRD
+      - "${FLASK_HOST_PORT:-7709}:${FLASK_CONTAINER_PORT:-7709}"
+    command: gunicorn --reload -w 1 -b 0.0.0.0:${FLASK_CONTAINER_PORT:-7709} app.wsgi:app
 
   nginx:
     container_name: nginx_${APPLICATION_NAME:-sample}
     restart: always
     build: ./nginx
     ports:
-      - "${NGINX_HOST_PORT:-8080}:${NGINX_CONTAINER_PORT:-8080}"
+      - "${NGINX_HOST_PORT:-7979}:${NGINX_CONTAINER_PORT:-7979}"
     depends_on:
       - flask
 
